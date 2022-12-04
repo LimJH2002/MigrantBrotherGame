@@ -1,5 +1,8 @@
 import PySimpleGUI as sg
 
+#Global variables
+day = 1
+
 #layouts & fonts
 font = ("Arial", 15)
 sg.theme('DarkTeal12')
@@ -8,8 +11,8 @@ layout = [[sg.Text("Welcome to our ACE Migrants Mini Game!", font=font)],
           [sg.Button("CONTINUE"), sg.Button("EXIT")]]
 
 layout2 = [[sg.Text("Day 1", font=font)],
-           [sg.Text('Player Name', font=font, size=(10,1)), sg.Text('Money($)', font=font, size=(7,1)), sg.Text('Happiness', font=font, size=(8,1))], 
-           [sg.Button("Start Day 1")]]
+           [sg.Text('PLAYER NAME', font=font, size=(15,1), justification='center'), sg.Text('MONEY($)', font=font, size=(10,1), justification='center'), sg.Text('HAPPINESS', font=font, size=(10,1), justification='center')], 
+           [sg.Button("START GAME")]]
 
 #Classes Declaration
 class player:
@@ -19,12 +22,23 @@ class player:
         self.happiness = 50
 
 class situation:
-    def __init__(self, scenario, a_text, a_points, b_text, b_points):
+    def __init__(self, scenario, a_text, a_money, a_happiness, b_text, b_money, b_happiness):
         self.scenario = scenario
         self.a_t = a_text
-        self.a_p = a_points
+        self.a_m = a_money
+        self.a_h = a_happiness
         self.b_t = b_text
-        self.b_p = b_points
+        self.b_m = b_money
+        self.b_h = b_happiness
+
+#Creating situation objects
+s1 = situation('Settling dinner plans after work',
+                'Scenario A: Go out with friends to eat at restaurant',
+                -20, 50,
+                'Scenario B: Dabao briyani back to eat',
+                -5, 10)
+
+situations = [s1]
 
 # Create the window
 window = sg.Window("Migrant Brother Game", layout)
@@ -46,16 +60,18 @@ while True:
 
         window.close()
 
+        #Populating players list
         j = 2
         for i in range(num_players):
-            profile = [sg.Text(players_list[i].name, font=font, size=(10,1), justification='center'), 
-                       sg.Text(players_list[i].money, font=font, size=(7,1), justification='center'), 
-                       sg.Text(players_list[i].happiness, font=font, size=(8,1), justification='center')]
+            profile = [sg.Text(players_list[i].name, font=font, size=(15,1), justification='center'), 
+                       sg.Text(players_list[i].money, font=font, size=(10,1), justification='center'), 
+                       sg.Text(players_list[i].happiness, font=font, size=(10,1), justification='center')]
             layout2.insert(j, profile)
             j += 1
 
         window = sg.Window("Game Start", layout2)
 
-    
+    if event == "START GAME":
+        pass
 
 window.close()
