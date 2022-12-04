@@ -28,7 +28,7 @@ class situation:
 
 # Create the window
 window = sg.Window("Migrant Brother Game", layout)
-names = []
+players_list = []
 
 # Create an event loop
 while True:
@@ -42,7 +42,7 @@ while True:
         num_players = int(values['num_of_players'])
         for i in range(num_players):
             name = sg.popup_get_text('Enter Your Name', font=font)
-            names.append(name)
+            players_list.append(player(name))
 
     
 
