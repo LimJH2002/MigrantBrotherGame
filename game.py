@@ -7,9 +7,9 @@ layout = [[sg.Text("Welcome to our ACE Migrants Mini Game!", font=font)],
           [sg.Text("Number of Players", size = (15, 1), font=font), sg.InputText(key='num_of_players')], 
           [sg.Button("CONTINUE"), sg.Button("EXIT")]]
 
-layout2 = [[sg.Text("Welcome to our ACE Migrants Mini Game!")],
-          [sg.Text("Number of Players", size = (15, 1)), sg.InputText()], 
-          [sg.Button("Test")]]
+layout2 = [[sg.Text("Day 1", font=font)],
+           [sg.Text('Player Name', font=font, size=(10,1)), sg.Text('Money($)', font=font, size=(7,1)), sg.Text('Happiness', font=font, size=(8,1))], 
+           [sg.Button("Start Day 1")]]
 
 #Classes Declaration
 class player:
@@ -41,8 +41,20 @@ while True:
     if event == "CONTINUE":
         num_players = int(values['num_of_players'])
         for i in range(num_players):
-            name = sg.popup_get_text('Enter Your Name', font=font)
+            name = sg.popup_get_text('Enter Your Name', font=font, modal=True)
             players_list.append(player(name))
+
+        window.close()
+
+        j = 2
+        for i in range(num_players):
+            profile = [sg.Text(players_list[i].name, font=font, size=(10,1), justification='center'), 
+                       sg.Text(players_list[i].money, font=font, size=(7,1), justification='center'), 
+                       sg.Text(players_list[i].happiness, font=font, size=(8,1), justification='center')]
+            layout2.insert(j, profile)
+            j += 1
+
+        window = sg.Window("Game Start", layout2)
 
     
 
