@@ -40,8 +40,17 @@ s1 = situation('Settling dinner plans after work',
 
 situations = [s1]
 
+#Helper Functions
+def game_turn():
+    choice = sg.Window('Continue?', [[sg.T('Do you want to continue?')], [sg.Button("A"), sg.Button("B")]], disable_close=True).read(close=True)
+    if choice[0] == 'a':
+        pass
+    elif choice[0] == 'b':
+        pass
+    return
+
 # Create the window
-window = sg.Window("Migrant Brother Game", layout)
+window = sg.Window("Migrant Brother Game", layout, auto_size_buttons=True, auto_size_text=True)
 players_list = []
 
 # Create an event loop
@@ -55,7 +64,7 @@ while True:
     if event == "CONTINUE":
         num_players = int(values['num_of_players'])
         for i in range(num_players):
-            name = sg.popup_get_text('Enter Your Name', font=font, modal=True)
+            name = sg.popup_get_text('Enter Your Name', font=font, modal=False)
             players_list.append(player(name))
 
         window.close()
@@ -72,6 +81,6 @@ while True:
         window = sg.Window("Game Start", layout2)
 
     if event == "START GAME":
-        pass
+        game_turn()
 
 window.close()
