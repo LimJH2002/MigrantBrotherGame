@@ -11,6 +11,21 @@ layout2 = [[sg.Text("Welcome to our ACE Migrants Mini Game!")],
           [sg.Text("Number of Players", size = (15, 1)), sg.InputText()], 
           [sg.Button("Test")]]
 
+#Classes Declaration
+class player:
+    def __init__(self, name):
+        self.name = name
+        self.money = 300
+        self.happiness = 50
+
+class situation:
+    def __init__(self, scenario, a_text, a_points, b_text, b_points):
+        self.scenario = scenario
+        self.a_t = a_text
+        self.a_p = a_points
+        self.b_t = b_text
+        self.b_p = b_points
+
 # Create the window
 window = sg.Window("Migrant Brother Game", layout)
 names = []
