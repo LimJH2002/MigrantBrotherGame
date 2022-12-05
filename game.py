@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import outsource
 
 #Global variables
 day = 1

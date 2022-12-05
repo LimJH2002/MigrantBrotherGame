@@ -62,7 +62,7 @@ s8 = situation('Your kid misses you',
                 0, -10)
 s9 = situation('You meet someone on an online dating app',
                'Scenario A: Go out with them. (Roll dice, if >=4 then +50hp \
-if <=3 then -50hp)',
+                if <=3 then -50hp)',
                -20, 50 or -50,
                'Scenario B: Skipz',
                0, -10)
@@ -81,7 +81,7 @@ s11 = situation('Wedding anniversary',
 
 s12 = situation('Drinking in public at night after 10pm',
                  'Scenario A: Drink with friends(-$10). (Roll dice, not caught if >= 4 else caught \
-and pay fine of -$30',
+                  and pay fine of -$30',
                  -10 or -40, 70,
                  'Scenario B: Don’t drink',
                  0, -10)
@@ -98,7 +98,8 @@ if <= 4 else a_money = -10 and a_happiness = -50',
                  -10 or 10, 50 or -50,
                  'Scenario B: Don’t bet',
                  0, -10)
-
+                 
+all_situations = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14]
 
 
                
